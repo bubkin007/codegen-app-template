@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yii Clean Architecture"
+  short_description: "Clean architecture rules for Yii3 backend"
+  default_prompt: "Use $yii-clean-architecture to implement a Yii3 backend change within the clean architecture."

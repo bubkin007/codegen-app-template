@@ -6,7 +6,8 @@
     "dev": "next dev --hostname admin.app.test",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check-skills": "diff -q skills/next-frontend-architecture/assets/hooks/use-app-dispatch.ts src/modules/shared/hooks/use-app-dispatch.ts && diff -q skills/next-frontend-architecture/assets/hooks/use-app-selector.ts src/modules/shared/hooks/use-app-selector.ts && diff -q skills/next-frontend-architecture/assets/store/store.ts src/modules/shared/store/store.ts && diff -q skills/next-frontend-architecture/assets/types/svg.d.ts src/types/svg.d.ts"
   },
   "dependencies": {
     "@mantine/core": "^9.3.1",
