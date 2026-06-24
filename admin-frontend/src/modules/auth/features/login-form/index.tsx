@@ -12,9 +12,7 @@ import { toDashboard } from '../../helpers/navigation'
 import { useLoginMutation } from '../../store/api'
 
 import { EmailInput } from '@modules/shared/components/email-input'
-import { FormRootError } from '@modules/shared/components/form-root-error'
 import { PasswordInput } from '@modules/shared/components/password-input'
-import { useApiFormErrors } from '@modules/shared/hooks/use-api-form-errors'
 import { isValidEmail } from '@modules/shared/helpers/validation'
 import type { IApiErrorResponse } from '@modules/shared/models/api-error-response.interface'
 
@@ -32,7 +30,7 @@ export function LoginForm() {
     const t = useTranslations('Auth.LoginForm')
     const sharedT = useTranslations('Shared.Validation')
     const router = useRouter()
-    const [login, { isLoading: isSubmitting, error: loginError, reset: resetLogin }] = useLoginMutation()
+    const [login, { isLoading: isSubmitting, reset: resetLogin }] = useLoginMutation()
     const form = useForm<LoginFormValues>({
         initialValues,
         validate: {
@@ -50,8 +48,6 @@ export function LoginForm() {
             password: values.password,
         }),
     })
-
-    useApiFormErrors(form, loginError)
 
     const handleSubmit = async (values: LoginFormValues) => {
         form.clearErrors()
@@ -86,8 +82,6 @@ export function LoginForm() {
 
                         <PasswordInput required {...form.getInputProps('password')} />
                     </Stack>
-
-                    <FormRootError error={form.errors.root} />
 
                     <Button
                         type="submit"
